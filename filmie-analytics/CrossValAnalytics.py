@@ -36,10 +36,12 @@ likeCorrelationEngMatches = 0
 for i in range(len(subUsersLists)):
     trainList = list(subUsersLists)
     testList = trainList.pop(i)
+    #print('trainlist')
+    #print(trainList[0])
     #print(set(np.reshape(trainList, -1)))
-    likeCorrelationEngMovies = movieLikeCorrelationEngine(trainList, usersDisList)
-    print(likeCorrelationEngMovies)
-    print()
+    likeCorrelationEngMovies = movieLikeCorrelationEngine(trainList[0], usersDisList)
+    #print(likeCorrelationEngMovies)
+    #print()
     print('testlist')
     print(testList)
     print()
@@ -52,8 +54,4 @@ likeCorrelationEngPercent = likeCorrelationEngMatches/len(usersList)
 print(len(usersList))
 print(likeCorrelationEngPercent)
 
-#for loop through each of the N groups of movies
-#during each iteration, remove that group from the total list to create a training group.
-#The removed group becomes test group.
-#Use the training group as seeds for the rec. engines.
-#Test to see if the test group are within outputs from the rec. engines
+

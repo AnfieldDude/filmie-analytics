@@ -51,24 +51,30 @@ def movieLikeCorrelationEngine(likesList, dislikesList):
     # CREATE USER VECTOR OF LIKES BASED ON MOVIES
     userInputVec = np.zeros((len(movieList),1))
     #should be zero
-
+    #print('likesList')
+    #print(likesList[0:99])
+    #print('dislikeList')
+    #print(dislikesList[0:99])
+    #print(movieList)
+    
     for i in movieList:
         if i in likesList:
             userInputVec[movieList.index(i),0] = 1
 
     #NO NEED TO RECREATE MATRIX
-    for j in movieList:
-        if j in dislikesList:
-            userInputVec[movieList.index(j),0] = -1
-   # print('userinputvector')
-   # print(userInputVec[0:99])
+    for i in movieList:
+        if i in dislikesList:
+            userInputVec[movieList.index(i),0] = -1
+    #print('userinputvector')
+    #print(userInputVec[0:999])
 
     recList = boomMatrix.dot(userInputVec)       
     #print('reclist')
+    #print(max(recList))
     #print(recList[0:99])
 
     movieCorrelation = orderColumn(recList, movieList, 200)
-    print(movieCorrelation[0:99])
+    #print(movieCorrelation[0:99])
     movieIDsList =[]
 
     ## REMOVE ALREADY LIKED ... WE SHOULD ALSO REMOVE DISLIKED WHEN ACCOUNTED FOR
