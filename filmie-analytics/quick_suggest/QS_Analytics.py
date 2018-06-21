@@ -323,6 +323,7 @@ def buildGlob(span = 0):
         
         glob.append([action_id, command, movies_sid, movies_rid, delta, created_at,
                      startlist_id, resultlist_id, cookie_id])
+
     return glob
 
 
@@ -377,7 +378,7 @@ def analyzeGlob(glob):
 
 
 ##MAIN##
-
+blockPrint()
 if len(sys.argv)>1: span = int(sys.argv[1])
 else: span=0
 
@@ -391,6 +392,6 @@ summary = findChainActions(summary)
 
 summary, chainDict = buildChainList(summary)
 
-
+enablePrint()
 #print(json.dumps(summary))
 print(json.dumps(chainDict))
